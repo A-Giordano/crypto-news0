@@ -11,10 +11,14 @@ async def get_transcript(request: Request):
     # Extract JSON body from the request. Expected format: {"url": "https://www.youtube.com/watch?v=YOUR_VIDEO_ID"}
     data = await request.json()
     video_url = data.get("url")
+    print("got url")
 
     transcript = get_transcript(video_url)
+    print("got transcript")
     summary = get_summary(transcript)
+    print("got summary")
     await send_message(summary)
+    print("sent summary")
 
     print("Success!!")
     return JSONResponse(
