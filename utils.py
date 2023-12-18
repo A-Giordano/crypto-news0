@@ -37,4 +37,4 @@ async def send_message(message):
 
 
 async def psw_correct(psw):
-    return True if psw is config.PSW else False
+    return True if psw.strip() is config.PSW else False
