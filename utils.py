@@ -9,12 +9,11 @@ import config
 
 def get_transcript(url):
     loader = YoutubeLoader.from_youtube_url(url, add_video_info=False
-    )
+                                            )
     return loader.load()
 
 
 def get_summary(transcript):
-
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_message),
         ("human", human_message)])
@@ -28,9 +27,14 @@ def get_summary(transcript):
 
     return stuff_chain.run(transcript)
 
+
 async def send_message(message):
     # Initialize the bot
     bot = Bot(token=config.BOT_TOKEN)
     # Send a message to the group chat
     await bot.send_message(chat_id=config.GROUP_CHAT_ID, text=message)
     print("Message sent!")
+
+
+async def psw_correct(psw):
+    return True if psw is config.PSW else False
