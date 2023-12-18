@@ -37,4 +37,8 @@ async def send_message(message):
 
 
 async def psw_correct(psw):
+    print(f"-{psw}-")
+    print(f"-{type(psw)}-")
+    print(f"o-{config.PSW}-")
+    print(f"o-{type(config.PSW)}-")
     return True if psw.strip() is config.PSW else False
