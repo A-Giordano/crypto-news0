@@ -15,14 +15,12 @@ def get_transcript(url):
 
 def get_summary(transcript):
 
-    gpt_model = config.GPT_MODEL
-
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_message),
         ("human", human_message)])
 
     # Define LLM chain
-    llm = ChatOpenAI(temperature=0, model_name=gpt_model)
+    llm = ChatOpenAI(temperature=0, model_name=config.GPT_MODEL)
     llm_chain = LLMChain(llm=llm, prompt=prompt)
     # Define StuffDocumentsChain
     stuff_chain = StuffDocumentsChain(llm_chain=llm_chain, document_variable_name="text")
