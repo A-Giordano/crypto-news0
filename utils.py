@@ -41,4 +41,6 @@ async def psw_correct(psw):
     print(f"-{type(psw)}-")
     print(f"o-{config.PSW}-")
     print(f"o-{type(config.PSW)}-")
+    test = psw.strip() is config.PSW
+    print(f"test {test}")
     return True if psw.strip() is config.PSW else False

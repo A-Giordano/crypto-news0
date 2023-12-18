@@ -13,7 +13,6 @@ async def transcript(request: Request):
     video_url = data.get("url")
     psw = data.get("psw")
     if not await psw_correct(psw):
-        print(f"wrong psw: {psw}")
         return JSONResponse(
             status_code=status.HTTP_401_UNAUTHORIZED,
             content={"message": "Incorrect PSW"},
