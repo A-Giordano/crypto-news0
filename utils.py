@@ -20,7 +20,7 @@ def get_summary(transcript):
         ("human", human_message)])
 
     # Define LLM chain
-    llm = ChatOpenAI(temperature=0, model_name=config.GPT_MODEL)
+    llm = ChatOpenAI(temperature=0, model_name=config.GPT_MODEL, openai_api_key=config.OPENAI_API_KEY)
     llm_chain = LLMChain(llm=llm, prompt=prompt)
     # Define StuffDocumentsChain
     stuff_chain = StuffDocumentsChain(llm_chain=llm_chain, document_variable_name="text")
