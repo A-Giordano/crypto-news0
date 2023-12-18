@@ -13,9 +13,9 @@ async def transcript(request: Request):
     video_url = data.get("url")
     print("got url")
 
-    transcript = get_transcript(video_url)
+    youtube_transcript = get_transcript(video_url)
     print("got transcript")
-    summary = get_summary(transcript)
+    summary = get_summary(youtube_transcript)
     print("got summary")
     await send_message(summary)
     print("sent summary")
