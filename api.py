@@ -6,6 +6,14 @@ from utils import get_summary, send_message, get_transcript, psw_correct
 
 app = FastAPI()
 
+@app.get("/wakeup")
+def wakeup():
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content={"message": "Container awake!"},
+    )
+
+
 @app.post("/transcript")
 async def transcript(request: Request):
     # Extract JSON body from the request. Expected format: {"url": "https://www.youtube.com/watch?v=YOUR_VIDEO_ID"}

@@ -17,7 +17,7 @@ def get_summary(transcript):
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_message),
         ("human", human_message)])
-    print(f"key: {config.OPENAI_API_KEY[:5]}")
+    # print(f"key: {config.OPENAI_API_KEY[:5]}")
 
     # Define LLM chain
     llm = ChatOpenAI(temperature=0, model_name=config.GPT_MODEL, openai_api_key=config.OPENAI_API_KEY)
