@@ -25,8 +25,10 @@ async def transcript(request: Request):
             status_code=status.HTTP_401_UNAUTHORIZED,
             content={"message": "Incorrect PSW"},
         )
-
+    print(f"video_url: {video_url}")
     youtube_transcript = get_transcript(video_url)
+    print(f"youtube_transcript: {youtube_transcript[:50]}")
+
     print("got transcript")
     summary = get_summary(youtube_transcript)
     print("got summary")
