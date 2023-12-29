@@ -63,6 +63,14 @@ def send_message(message):
     print("Message sent!")
 
 
+async def async_send_message(message):
+    # Initialize the bot
+    bot = Bot(token=config.BOT_TOKEN)
+    # Send a message to the group chat
+    await bot.send_message(chat_id=config.GROUP_CHAT_ID, text=message)
+    print("Message sent!")
+
+
 async def psw_correct(psw):
     print(f"-{psw}-")
     print(f"-{type(psw)}-")
