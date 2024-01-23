@@ -35,8 +35,7 @@ def get_new_video_id(timedelta):
 
 
 def get_transcript(url):
-    loader = YoutubeLoader.from_youtube_url(url, add_video_info=False
-                                            )
+    loader = YoutubeLoader.from_youtube_url(url, add_video_info=False, language=['en', 'it'])
     return loader.load()
 
 
