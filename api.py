@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 from starlette import status
 from starlette.responses import JSONResponse
 
@@ -27,6 +27,11 @@ async def transcript(request: Request):
         )
     print(f"video_url: {video_url}")
     youtube_transcript = get_transcript(video_url)
+    if not youtube_transcript:
+        raise HTTPException(
+            status_code=500,
+            detail="Empty Youtube Transcript! Probably live video not yet ended therefore no transcript yet",
+        )
     print(f"youtube_transcript: {youtube_transcript[:50]}")
 
     print("got transcript")
