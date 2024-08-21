@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request, HTTPException
 from starlette import status
 from starlette.responses import JSONResponse
 
-from utils import get_summary, get_transcript, psw_correct, async_send_message, get_transcript_2
+from utils import get_summary, get_transcript, psw_correct, async_send_message, get_transcript_2, get_summary_2
 
 app = FastAPI()
 
@@ -37,7 +37,7 @@ async def transcript(request: Request):
     print(f"youtube_transcript: {youtube_transcript[:50]}")
 
     print("got transcript")
-    summary = get_summary(youtube_transcript)
+    summary = get_summary_2(youtube_transcript)
     print("got summary")
     await async_send_message(summary)
     print("sent summary")

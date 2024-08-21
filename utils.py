@@ -64,6 +64,19 @@ def get_summary(transcript):
 
     return stuff_chain.run(transcript)
 
+def get_summary_2(transcript):
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", system_message),
+        ("human", human_message)])
+    # print(f"key: {config.OPENAI_API_KEY[:5]}")
+
+    # Define LLM chain
+    llm = ChatOpenAI(temperature=0, model_name=config.GPT_MODEL, openai_api_key=config.OPENAI_API_KEY)
+
+    chain = prompt | llm
+
+    return chain.invoke({"text": transcript})
+
 
 def send_message(message):
     # Initialize the bot
