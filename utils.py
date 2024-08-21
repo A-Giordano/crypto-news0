@@ -75,7 +75,7 @@ def get_summary_2(transcript):
 
     chain = prompt | llm
 
-    return chain.invoke({"text": transcript})
+    return chain.invoke({"text": transcript}).content
 
 
 def send_message(message):
