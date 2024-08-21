@@ -2,6 +2,7 @@ import datetime
 from langchain.chains import LLMChain, StuffDocumentsChain
 from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import YoutubeLoader
+from youtube_transcript_api import YouTubeTranscriptApi
 from langchain_core.prompts import ChatPromptTemplate
 from prompts import system_message, human_message
 from telegram import Bot
@@ -37,6 +38,16 @@ def get_new_video_id(timedelta):
 def get_transcript(url):
     loader = YoutubeLoader.from_youtube_url(url, add_video_info=False, language=['en', 'it'])
     return loader.load()
+
+def get_transcript_2(video_url):
+    # Extract the video ID from the URL
+    video_id = video_url.split("?v=")[1]
+
+    try:
+        transcript = YouTubeTranscriptApi.get_transcript(video_id)
+        return " ".join([entry["text"] for entry in transcript])
+    except Exception as e:
+        return f"Error: {e}"
 
 
 def get_summary(transcript):

@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request, HTTPException
 from starlette import status
 from starlette.responses import JSONResponse
 
-from utils import get_summary, get_transcript, psw_correct, async_send_message
+from utils import get_summary, get_transcript, psw_correct, async_send_message, get_transcript_2
 
 app = FastAPI()
 
@@ -26,7 +26,8 @@ async def transcript(request: Request):
             content={"message": "Incorrect PSW"},
         )
     print(f"video_url: {video_url}")
-    youtube_transcript = get_transcript(video_url)
+    # youtube_transcript = get_transcript(video_url)
+    youtube_transcript = get_transcript_2(video_url)
     if not youtube_transcript:
         print(f"empty youtube_transcript: {youtube_transcript[:50]}")
         raise HTTPException(
