@@ -48,7 +48,7 @@ def get_transcript_2(video_url):
         return " ".join([entry["text"] for entry in transcript])
     except Exception as e:
         print(f"Error: {e}")
-        return None
+        return ""
 
 
 def get_summary(transcript):
