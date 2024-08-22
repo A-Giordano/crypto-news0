@@ -46,6 +46,7 @@ def get_transcript_2(video_url):
 
     try:
         transcript = YouTubeTranscriptApi.get_transcript(video_id,
+                                                         languages=('en', 'it'),
                                                          proxies={"https": f"socks5://{config.PROXY_USER}:{config.PROXY_PSW}@{config.PROXY_DOMAIN}:{config.PROXY_PORT}"})
         return " ".join([entry["text"] for entry in transcript])
     except Exception as e:
