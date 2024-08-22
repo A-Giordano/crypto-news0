@@ -11,4 +11,8 @@ OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY', '')
 YOUTUBE_API_KEY = os.environ.get('YOUTUBE_API_KEY', '')
 BOT_TOKEN = os.environ.get('BOT_TOKEN', '')
 GROUP_CHAT_ID = os.environ.get('GROUP_CHAT_ID', 0)
+PROXY_USER = os.environ.get('PROXY_USER', "")
+PROXY_PSW = os.environ.get('PROXY_PSW', "")
+PROXY_DOMAIN = os.environ.get('PROXY_DOMAIN', "")
+PROXY_PORT = os.environ.get('PROXY_PORT', "")
 

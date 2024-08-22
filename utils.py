@@ -39,12 +39,14 @@ def get_transcript(url):
     loader = YoutubeLoader.from_youtube_url(url, add_video_info=False, language=['en', 'it'])
     return loader.load()
 
+
 def get_transcript_2(video_url):
     # Extract the video ID from the URL
     video_id = video_url.split("?v=")[1]
 
     try:
-        transcript = YouTubeTranscriptApi.get_transcript(video_id)
+        transcript = YouTubeTranscriptApi.get_transcript(video_id,
+                                                         proxies={"http": f"http://{config.PROXY_USER}:{config.PROXY_PSW}@{config.PROXY_DOMAIN}:{config.PROXY_PORT}"})
         return " ".join([entry["text"] for entry in transcript])
     except Exception as e:
         print(f"Error: {e}")
@@ -64,6 +66,7 @@ def get_summary(transcript):
     stuff_chain = StuffDocumentsChain(llm_chain=llm_chain, document_variable_name="text")
 
     return stuff_chain.run(transcript)
+
 
 def get_summary_2(transcript):
     prompt = ChatPromptTemplate.from_messages([
