@@ -6,3 +6,4 @@ python-dotenv==1.0.0
 python-telegram-bot==20.7
 youtube-transcript-api==0.6.2
 requests[socks]
+pysocks
